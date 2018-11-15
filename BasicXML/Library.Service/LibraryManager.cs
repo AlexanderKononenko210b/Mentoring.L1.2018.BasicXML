@@ -7,8 +7,8 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using Library.Infrastructure.FakeModels;
+using Library.Infrastructure.Interfaces;
 using Library.Infrastructure.Models;
-using Library.Service.Interfaces;
 
 namespace Library.Service
 {

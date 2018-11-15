@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\ModelValidationException.cs" />
-    <Compile Include="Interfaces\IValidator.cs" />
     <Compile Include="LibraryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ValidateMassages.Designer.cs">

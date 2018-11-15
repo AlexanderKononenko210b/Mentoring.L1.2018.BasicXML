@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using FluentValidation.Results;
+using Library.Infrastructure.Interfaces;
 using Library.Infrastructure.Models;
-using Library.Service.Interfaces;
 using Library.Service.Resources;
 
 namespace Library.Service.Validators
@@ -37,7 +37,7 @@ namespace Library.Service.Validators
                 }
                     
                 default:
-                    return (false, new string[]{ ValidateMassages.NotLibraryArtifact});
+                    return (false, new []{ ValidateMassages.NotLibraryArtifact});
             }
         }
 
@@ -48,7 +48,7 @@ namespace Library.Service.Validators
         /// <param name="validator">The validator.</param>
         /// <param name="item">The item.</param>
         /// <returns>The <see cref="Tuple"/>:
-        /// isValid - true if input instance is valid otherwase false,
+        /// isValid - true if input instance is valid otherwise false,
         /// errors - errors collection.
         /// </returns>
         private static (bool isValid, IEnumerable<string> errors) ValidateHelper<T>(FluentValidation.IValidator validator, T item)
