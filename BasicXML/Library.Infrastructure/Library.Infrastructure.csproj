@@ -45,11 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtifactInitializer.cs" />
-    <Compile Include="ArtifactCounter.cs" />
     <Compile Include="FakeModels\FakeBook.cs" />
     <Compile Include="FakeModels\FakeNewspaper.cs" />
     <Compile Include="FakeModels\FakePatent.cs" />
     <Compile Include="FakeModels\NotLibraryArtifact.cs" />
+    <Compile Include="Interfaces\IValidator.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\LibraryArtifact.cs" />
     <Compile Include="Models\Newspaper.cs" />

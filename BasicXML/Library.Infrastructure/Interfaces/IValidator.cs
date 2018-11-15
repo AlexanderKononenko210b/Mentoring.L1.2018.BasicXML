@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Library.Infrastructure.Models;
 
-namespace Library.Service.Interfaces
+namespace Library.Infrastructure.Interfaces
 {
     /// <summary>
     /// Represents an <see cref="IValidator{T}"/> interface.

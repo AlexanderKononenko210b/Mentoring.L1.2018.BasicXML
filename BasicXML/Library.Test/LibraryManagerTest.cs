@@ -4,10 +4,11 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using Library.Infrastructure;
+using Library.Infrastructure.Interfaces;
 using Library.Infrastructure.Models;
 using Library.Service;
-using Library.Service.Interfaces;
 using Library.Service.Validators;
+using Library.Test.Helpers;
 using Moq;
 using NUnit.Framework;
 
@@ -48,9 +49,9 @@ namespace Library.Test
 
             using (var stream = File.Open(_path, FileMode.Open, FileAccess.Read, FileShare.None))
             {
-                var result = ArtifactCounter.CountArtifact(stream).ToArray();
+                var result = ArtifactCounter.CountArtifact(stream);
 
-                Assert.AreEqual(countInputArtifacts, result.Length);
+                Assert.AreEqual(countInputArtifacts, result);
             }
         }
 
@@ -75,9 +76,9 @@ namespace Library.Test
 
             using (var stream = File.Open(_path, FileMode.Open, FileAccess.Read, FileShare.None))
             {
-                var result = ArtifactCounter.CountArtifact(stream).ToArray();
+                var result = ArtifactCounter.CountArtifact(stream);
 
-                Assert.AreEqual(countInputArtifacts, result.Length);
+                Assert.AreEqual(countInputArtifacts, result);
             }
         }
 
@@ -103,7 +104,7 @@ namespace Library.Test
             {
                 var result = manager.Read(stream).ToArray();
 
-                Assert.AreEqual(validArtifacts - notValidArtifacts, result.Length);
+                Assert.AreEqual(validArtifacts, result.Length);
             }
         }
 
@@ -129,7 +130,7 @@ namespace Library.Test
             {
                 var result = manager.Read(stream).ToArray();
 
-                Assert.AreEqual(validArtifacts - notValidArtifacts, result.Length);
+                Assert.AreEqual(validArtifacts, result.Length);
             }
         }
     }

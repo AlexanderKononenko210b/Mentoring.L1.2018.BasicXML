@@ -28,21 +28,16 @@ namespace Library.Infrastructure
                 throw new ArgumentOutOfRangeException(nameof(numberNotValidArtifact));
             }
 
+            for (int i = 0; i < numberNotValidArtifact; i++)
+            {
+                yield return new NotLibraryArtifact();
+            }
+
             Random rand = new Random();
-            var countErrors = 0;
 
             for (int i = 0; i < numberValidArtifacts; i++)
             {
-                int number;
-
-                if (numberNotValidArtifact > 0)
-                {
-                    number = rand.Next(0, 4);
-                }
-                else
-                {
-                    number = rand.Next(0, 3);
-                }
+                var number = rand.Next(0, 3);
 
                 switch (number)
                 {
@@ -54,17 +49,6 @@ namespace Library.Infrastructure
                         break;
                     case 2:
                         yield return new FakePatent();
-                        break;
-                    case 3:
-                        if (countErrors < numberNotValidArtifact)
-                        {
-                            yield return new NotLibraryArtifact();
-                            countErrors++;
-                        }
-                        else
-                        {
-                            yield return new FakeBook();
-                        }
                         break;
                     default:
                         continue;

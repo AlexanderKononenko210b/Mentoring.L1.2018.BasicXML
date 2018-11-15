@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace Library.Infrastructure
+namespace Library.Test.Helpers
 {
     /// <summary>
     /// Represents a <see cref="ArtifactCounter"/> class.
@@ -14,19 +13,22 @@ namespace Library.Infrastructure
         /// Count artifacts.
         /// </summary>
         /// <param name="stream">The stream.</param>
-        /// <returns>The <see cref="IEnumerable{T}"/></returns>
-        public static IEnumerable<int> CountArtifact(Stream stream)
+        /// <returns>The count artifacts./></returns>
+        public static int CountArtifact(Stream stream)
         {
             var reader = XmlReader.Create(stream);
             reader.ReadToFollowing("catalogInfo");
             reader.ReadStartElement();
+            var countArtifact = 0;
 
             while (reader.ReadToNextSibling("artifact"))
             {
                 var artifact = XNode.ReadFrom(reader) as XElement;
 
-                yield return artifact == null ? 0 : 1;
+                countArtifact += artifact == null ? 0 : 1;
             }
+
+            return countArtifact;
         }
     }
 }
